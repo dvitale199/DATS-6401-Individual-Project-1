@@ -22,8 +22,13 @@ body,h1,h2,h3,h4,h5 {font-family: 'Poiret One', cursive;}
 			var year_list = ['2010', '2011', '2012', '2013', '2014', '2015', '2016',
 							'2017']	
 					
-			// call all chart functions
+			// call all chart functions- calls query and calls the features of each chart to draw to divs below
 			function createAllCharts() {
+			
+				sendQuery('total_df',
+						'SELECT A,I,J,B,D',
+						drawBubbleChart)
+						
 				sendQuery('total_ME',
 						'SELECT A,B,C,D,E,F,G,H,I',
 						drawOverallMilitarySpendingChart)
@@ -48,9 +53,7 @@ body,h1,h2,h3,h4,h5 {font-family: 'Poiret One', cursive;}
 						'SELECT A,B,C,D,E,F,G,H,I',
 						drawPctGdpHealthcareSpendingChart)
 				
-				sendQuery('total_df',
-						'SELECT A,I,J,B,D',
-						drawBubbleChart)
+				
 
 			}//createCharts
 			function sendQuery(sheetname, query, chartBuilder) {
@@ -218,7 +221,10 @@ body,h1,h2,h3,h4,h5 {font-family: 'Poiret One', cursive;}
 			<h2>Healthcare Spending of G20 Countries (% GDP)</h2>
 			<div id="pct_gdp_healthcare_spending"
 				style="width:1200px; height:600px;"></div>
-		</div><!-- plotting -->			
+			<a style="font-size:200%" href="per_country_plots.html" class="button light-light-grey padding-16">Per-Country Plots --></a>
+		</div><!-- plotting -->	
+		
+				
 	</body>
 	
 <footer class="light-grey padding-16 center" >
