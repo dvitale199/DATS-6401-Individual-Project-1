@@ -1,4 +1,6 @@
 # DATS-6401-Individual-Project-1
+[![DOI](https://zenodo.org/badge/174310627.svg)](https://zenodo.org/badge/latestdoi/174310627)
+# site can be found here: https://dvitale199.github.io/DATS-6401-Individual-Project-1/index.html
 
 This is a visual analysis of Military, Education, and Healthcare Spending of G20 countries
 
@@ -13,4 +15,7 @@ Webpages written in HTML, CSS, Javascript.
 
 Visualizations written in Javascript using Google Visualization API
 
-[![DOI](https://zenodo.org/badge/174310627.svg)](https://zenodo.org/badge/latestdoi/174310627)
+
+
+
+
