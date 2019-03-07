@@ -1,0 +1,546 @@
+<html>
+<title>Daniel Vitale- Project 1</title>
+<!-- <meta charset="UTF-8"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style/project1style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" >
+<style>
+body,h1,h2,h3,h4,h5 {font-family: 'Poiret One', cursive;}
+</style>
+	<head>
+		<script type="text/javascript",
+			src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			google.charts.load('current',{'packages':['corechart']});
+			
+			// remember to call charts to load with page!!!!
+			google.charts.setOnLoadCallback(createAllCharts);
+					
+			// call all chart functions
+			function createAllCharts() {
+						
+				sendQuery('Australia',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEAustralia)
+				
+				sendQuery('Brazil',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEBrazil)
+				
+				sendQuery('Canada',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMECanada)
+				
+				sendQuery('China',
+						'SELECT B,E,H,N',
+						drawPCGDPvsPCMEChina)
+				
+				sendQuery('France',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEFrance)
+
+				sendQuery('Germany',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEGermany)
+
+				sendQuery('India',
+						'SELECT B,E,H,N',
+						drawPCGDPvsPCMEIndia)
+
+				
+				sendQuery('Italy',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEItaly)
+
+				sendQuery('Japan',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEJapan)
+				
+				sendQuery('Mexico',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEMexico)
+				
+				sendQuery('Russia',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMERussia)
+				
+				sendQuery('Saudi Arabia',
+						'SELECT B,E,H',
+						drawPCGDPvsPCMESaudiArabia)
+
+				sendQuery('South Africa',
+						'SELECT B,E,H,N',
+						drawPCGDPvsPCMESouthAfrica)
+
+				sendQuery('Turkey',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMETurkey)
+				
+				sendQuery('UK',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEUK)
+
+				sendQuery('USA',
+						'SELECT B,E,H,L,N',
+						drawPCGDPvsPCMEUS)
+			}//createCharts
+
+			function sendQuery(sheetname, query, chartBuilder) {
+				var queryString = encodeURIComponent(query);
+				var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/182fkJ71DTQQXsPrZBW1mjyTTems8HlJOBfeoXuUhCFk/gviz/tq?sheet=' +
+							sheetname + '&headers=1&tq=' + queryString);
+				query.send(chartBuilder);
+			}//sendQuery
+			
+			
+			function drawPCGDPvsPCMEAustralia(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('australia_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEAustralia
+			
+			function drawPCGDPvsPCMEBrazil(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('brazil_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEBrazil
+			
+			function drawPCGDPvsPCMECanada(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('canada_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMECanada
+			
+			function drawPCGDPvsPCMEChina(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('china_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEChina
+			
+			function drawPCGDPvsPCMEFrance(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('france_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEFrance
+			
+			function drawPCGDPvsPCMEGermany(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('germany_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEGermany
+			
+			function drawPCGDPvsPCMEIndia(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('india_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEIndia
+
+			function drawPCGDPvsPCMEItaly(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('italy_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEItaly
+			
+			function drawPCGDPvsPCMEJapan(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('japan_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEJapan
+			
+			
+			function drawPCGDPvsPCMEMexico(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('mexico_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEMexico
+			
+			function drawPCGDPvsPCMERussia(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('russia_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMERussia
+			
+			function drawPCGDPvsPCMESaudiArabia(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('saudiarabia_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMESaudiArabia
+			
+			function drawPCGDPvsPCMESouthAfrica(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('southafrica_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMESouthAfrica
+			
+			function drawPCGDPvsPCMETurkey(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('turkey_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMETurkey
+			
+			function drawPCGDPvsPCMEUK(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('uk_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEUK
+			
+			function drawPCGDPvsPCMEUS(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						series: {
+          					0: {targetAxisIndex: 0},
+          					1: {targetAxisIndex: 1}
+        				},
+        				vAxes: {
+          					// Adds titles to each axis.
+          					0: {title: 'Per Capita Military Expenditure (Million USD)'},
+          					1: {title: 'Per Capita GDP (Million USD)'}
+       					},
+						hAxis: {title: 'Year'}
+						}
+		
+				var chart = new google.visualization.LineChart(
+						document.getElementById('us_pcgdp_pcme'));
+						
+				chart.draw(data, chart_vars);
+			}//drawPCGDPvsPCMEUS	
+		</script>
+	</head>
+<body class="content" style="max-width:1300px">
+	<div class="row">
+		<div class="half grey container center" style="height:425px">
+			<div class="padding-10">
+				<h1><b>Daniel Vitale</b></h1>
+				<h3>M.S. in Data | George Washington University</h3>
+			</div><!-- padding-50 -->
+			<div class="padding-10">
+				<a style="font-size:130%" href="index.html" class="button hover-blue-grey padding-16" >Home</a>
+				<a style="font-size:130%" href="per_country_plots.html" class="button hover-blue-grey padding-16"><- Go Back</a>
+			</div> <!-- padding-10 -->
+		</div><!-- half black container center -->
+		<div class="half blue-grey container" style="height:425px">
+			<div class="padding-50 center">
+				<img src="style/world.jpg" class="margin" alt="Person" style="width:25%">
+				<h2>A comparison of Military, Education, and Healthcare spending across
+								G20 Countries:</h2>
+				<h4>Per-Country Spending Plots</h4>
+			</div><!-- padding-50 center-->
+		</div><!--half blue-grey container -->
+	</div><!--row-->
+		<div class="plotting">
+		
+			<h2>Australia GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="australia_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Brazil GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="brazil_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Canada GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="canada_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>China GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="china_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>France GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="france_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Germany GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="germany_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>India GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="india_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Italy GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="italy_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Japan GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="japan_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Mexico GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="mexico_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Russia GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="russia_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Saudi Arabia GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="saudiarabia_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>South Africa GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="southafrica_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>Turkey GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="turkey_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>UK GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="uk_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+			<h2>USA GDP vs. Military vs. Education vs. Healthcare (Per Capita)</h2>
+			<div id="us_pcgdp_pcme"
+				style="width:1200px; height:600px;"></div>
+		</div><!--plotting -->	
+</body>
+<footer class="light-grey padding-16 center" >
+  <p>Daniel Vitale</p>
+  <p>Email: <a href="mailto:vitaled2@gwmail.gwu.edu">
+  vitaled2@gwmail.gwu.edu</a></p>
+  <h6><a href="https://github.com/dvitale199/DATS-6401-Midterm" >https://github.com/dvitale199/DATS-6401-Midterm</a></h6>
+</footer>
+</html>

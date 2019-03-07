@@ -1,0 +1,231 @@
+<!doctype html>
+
+<html>
+<title>Daniel Vitale- Project 1</title>
+<!-- <meta charset="UTF-8"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style/project1style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" >
+<style>
+body,h1,h2,h3,h4,h5 {font-family: 'Poiret One', cursive;}
+</style>
+	<head>
+		<script type="text/javascript",
+			src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			google.charts.load('current',{'packages':['corechart']});
+			
+			// remember to call charts to load with page!!!!
+			google.charts.setOnLoadCallback(createAllCharts);
+			
+			// var country_list =['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 'India', 'Indonesia', 'Italy', 'Japan', 'Republic of Korea', 'Mexico', 'Russia', 'Saudi Arabia', 'South Africa', 'Turkey', 'UK', 'USA']
+			
+			var year_list = ['2010', '2011', '2012', '2013', '2014', '2015', '2016',
+							'2017']	
+					
+			// call all chart functions
+			function createAllCharts() {
+				sendQuery('total_ME',
+						'SELECT A,B,C,D,E,F,G,H,I',
+						drawOverallMilitarySpendingChart)
+			
+				sendQuery('pct_gdp_ME',
+						'SELECT A,B,C,D,E,F,G,H,I',
+						drawPctGdpMilitarySpendingChart)
+						
+				sendQuery('total_ED',
+						'SELECT A,B,C,D,E,F,G',
+						drawOverallEducationSpendingChart)
+			
+				sendQuery('pct_gdp_ED',
+						'SELECT A,B,C,D,E,F,G',
+						drawPctGdpEducationSpendingChart)
+						
+				sendQuery('total_HC',
+						'SELECT A,B,C,D,E,F,G,H,I',
+						drawOverallHealthcareSpendingChart)
+			
+				sendQuery('pct_gdp_HC',
+						'SELECT A,B,C,D,E,F,G,H,I',
+						drawPctGdpHealthcareSpendingChart)
+				
+				sendQuery('total_df',
+						'SELECT A,I,J,B,D',
+						drawBubbleChart)
+
+			}//createCharts
+			function sendQuery(sheetname, query, chartBuilder) {
+				var queryString = encodeURIComponent(query);
+				var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/182fkJ71DTQQXsPrZBW1mjyTTems8HlJOBfeoXuUhCFk/gviz/tq?sheet=' +
+							sheetname + '&headers=1&tq=' + queryString);
+				query.send(chartBuilder);
+			}//sendQuery
+			
+			function drawBubbleChart(queryResponse) {
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:800,
+						width:1200,
+						vAxis: {title:'Healthcare Expenditure (% GDP)',
+						ticks: [2,4,6,8,10,12,14,16,18]},
+						hAxis: {title:'Education Expenditure (% GDP)',
+							ticks: [1.5,2.5,3.5,4.5,5.5]},
+						bubble: {
+      						textStyle: {
+       						 	fontSize: 12,
+        						fontName: 'Times-Roman',
+        						color: 'green',
+        						bold: true,
+        						italic: true
+      						}
+						}
+					}
+				var chart = new google.visualization.BubbleChart(
+						document.getElementById('bubble_chart'));
+				
+				chart.draw(data, chart_vars)	
+			}//drawBubbleChart
+				
+			function drawOverallMilitarySpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Spending in Millions ($)'},
+						hAxis: {title: 'Country'}
+						}
+		
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('overall_military_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//overallMilitarySpendingChartBuilder
+			
+			function drawPctGdpMilitarySpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Military Spending (% GDP)'},
+						hAxis: {title: 'Country'}
+						}
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('pct_gdp_military_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//drawPctGdpMilitarySpendingChart		
+			
+			function drawOverallEducationSpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Spending in Millions ($)'},
+						hAxis: {title: 'Country'}
+						}
+		
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('overall_education_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//overallEducationSpendingChartBuilder
+			
+			function drawPctGdpEducationSpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Military Spending (% GDP)'},
+						hAxis: {title: 'Country'}
+						}
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('pct_gdp_education_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//drawPctGdpEducationSpendingChart
+			
+			function drawOverallHealthcareSpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Spending in Millions ($)'},
+						hAxis: {title: 'Country'}
+						}
+		
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('overall_healthcare_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//overallHealthcareSpendingChartBuilder
+			
+			function drawPctGdpHealthcareSpendingChart(queryResponse){
+				var data = queryResponse.getDataTable();
+				var chart_vars = {
+						height:600,
+						width:1200,
+						vAxis: {title: 'Military Spending (% GDP)'},
+						hAxis: {title: 'Country'}
+						}
+				var chart = new google.visualization.ColumnChart(
+						document.getElementById('pct_gdp_healthcare_spending'));
+			
+				chart.draw(data, chart_vars);
+			}//drawPctGdpHealthcareSpendingChart		
+		</script>
+	</head>
+<body class="content" style="max-width:1300px">
+	<div class="row">
+		<div class="half grey container center" style="height:425px">
+			<div class="padding-10">
+				<h1><b>Daniel Vitale</b></h1>
+				<h3>M.S. in Data | George Washington University</h3>
+			</div><!-- padding-50 -->
+			<div class="padding-10">
+				<a style="font-size:130%" href="index.html" class="button hover-blue-grey padding-16" >Home</a>
+				<a style="font-size:130%" href="per_country_plots.html" class="button hover-blue-grey padding-16">Per-Country Plots</a>
+				<a style="font-size:130%" href="index.html" class="button hover-blue-grey padding-16"><- Go Back</a>
+			</div> <!-- padding-10 -->
+		</div><!-- half black container center -->
+		<div class="half blue-grey container" style="height:425px">
+			<div class="padding-50 center">
+				<img src="style/world.jpg" class="margin" alt="Person" style="width:25%">
+				<h2>A comparison of Military, Education, and Healthcare spending across
+								G20 Countries:</h2>
+				<h4>Overall Spending Plots</h4>
+			</div><!-- padding-50 center-->
+		</div><!--half blue-grey container -->
+	</div><!--row-->
+		<div class="plotting">
+			<h2>Education, Healthcare, and Military Spending</h2>
+			<div id="bubble_chart"
+				style="width:1200px; height:800px;"></div>
+			<h2>Overall Military Spending of G20 Countries</h2>
+			<div id="overall_military_spending"
+				style="width:1200px; height:600px;"></div>
+			<h2>Military Spending of G20 Countries (% GDP)</h2>
+			<div id="pct_gdp_military_spending"
+				style="width:1200px; height:600px;"></div>
+			<h2>Overall Education Spending of G20 Countries</h2>
+			<div id="overall_education_spending"
+				style="width:1200px; height:600px;"></div>
+			<h2>Education Spending of G20 Countries (% GDP)</h2>
+			<div id="pct_gdp_education_spending"
+				style="width:1200px; height:600px;"></div>
+			<h2>Overall Healthcare Spending of G20 Countries</h2>
+			<div id="overall_healthcare_spending"
+				style="width:1200px; height:600px;"></div>
+			<h2>Healthcare Spending of G20 Countries (% GDP)</h2>
+			<div id="pct_gdp_healthcare_spending"
+				style="width:1200px; height:600px;"></div>
+		</div><!-- plotting -->			
+	</body>
+	
+<footer class="light-grey padding-16 center" >
+  <p>Daniel Vitale</p>
+  <p>Email: <a href="mailto:vitaled2@gwmail.gwu.edu">
+  vitaled2@gwmail.gwu.edu</a></p>
+  <h6><a href="https://github.com/dvitale199/DATS-6401-Midterm" >https://github.com/dvitale199/DATS-6401-Midterm</a></h6>
+</footer>
+</html>
