@@ -12,3 +12,5 @@ Another Note: If you would like to use your own Google Sheets, you must also gen
 Webpages written in HTML, CSS, Javascript.
 
 Visualizations written in Javascript using Google Visualization API
+
+[![DOI](https://zenodo.org/badge/174310627.svg)](https://zenodo.org/badge/latestdoi/174310627)
