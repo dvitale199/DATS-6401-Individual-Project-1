@@ -1,6 +1,6 @@
 # A comparison of Military, Education, and Healthcare spending across G20 Countries
 [![DOI](https://zenodo.org/badge/174310627.svg)](https://zenodo.org/badge/latestdoi/174310627)
-# site can be found here: https://dvitale199.github.io/DATS-6401-Individual-Project-1/index.html
+# site can be found here: https://dvitale199.github.io/A-comparison-of-Military-Education-and-Healthcare-spending-across-G20-Countries/
 
 This is a visual analysis of Military, Education, and Healthcare Spending of G20 countries
 
